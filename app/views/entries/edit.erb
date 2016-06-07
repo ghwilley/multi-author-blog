@@ -1,0 +1,10 @@
+<form method="post" action="/users/<%= current_user.id %>/entries/<%= @entry.id %>">
+  <input name="_method" value="put" type="hidden">
+
+  <label for="entry[title]">Title: </label>
+  <input type="text" name="entry[title]" value="<%= @entry.title %>"><br>
+  <label for="entry[body]">Body: </label>
+  <textarea name="entry[body]"><%= @entry.body %></textarea><br>
+
+  <input type="submit" value="submit">
+</form>

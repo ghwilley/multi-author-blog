@@ -1,7 +1,20 @@
 :D
 <% Entry.all.each do |entry| %>
-<h2><%= entry.title %></h2>
-<div><%= entry.body %></div>
+  <h2><%= entry.title %></h2>
+  <div><%= entry.body %></div><br>
+
+  <% if current_user && current_user.id == entry.user_id %>
+  <div>
+    <form method="get" action="/users/<%= current_user.id %>/entries/<%= entry.id %>">
+      <input type="submit" value="edit">
+    </form>
+
+    <form method="post" action="/users/<%= current_user.id %>/entries/<%= entry.id %>">
+      <input name="_method" value="delete" type="hidden">
+      <input type="submit" value="delete">
+    </form>
+    <% end %>
+  </div>
 <% end %>
 
 <% if current_user %>
