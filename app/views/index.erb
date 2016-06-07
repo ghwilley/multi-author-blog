@@ -1,0 +1,9 @@
+:D
+<% Entry.all.each do |entry| %>
+<h2><%= entry.title %></h2>
+<div><%= entry.body %></div>
+<% end %>
+
+<% if current_user %>
+<a href="/users/<%= current_user.id %>/entries/new">Add Entry</a>
+<% end %>
