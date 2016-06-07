@@ -1,4 +1,7 @@
-<form method="post" action="/users/@user.id/entries/new">
-  <input>
-
+<form method="post" action="/users/<%= params[:user_id] %>/entries">
+  <label for="entry[title]">Title: </label>
+  <input type="text" name="entry[title]"><br>
+  <label for="entry[body]">Body: </label>
+  <textarea name="entry[body]"></textarea><br>
+  <input type="submit" value="submit">
 </form>
