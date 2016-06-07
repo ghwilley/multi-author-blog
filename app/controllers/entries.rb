@@ -16,3 +16,24 @@ post '/users/:user_id/entries' do
   end
 end
 
+get '/users/:user_id/entries/:entry_id' do
+  @entry = Entry.find(params[:entry_id])
+  @user = current_user
+  erb :"entries/edit"
+end
+
+put '/users/:user_id/entries/:entry_id' do
+  @entry = Entry.find(params[:entry_id])
+  @user = current_user
+  if @entry.update_attributes(params[:entry])
+    redirect '/'
+  else
+    erb :"entries/edit"
+  end
+end
+
+delete '/users/:user_id/entries/:entry_id' do
+  @entry = Entry.find(params[:entry_id])
+  @entry.destroy
+  redirect '/'
+end
